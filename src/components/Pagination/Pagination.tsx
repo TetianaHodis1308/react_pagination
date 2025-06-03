@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { getNumbers } from '../../utils';
+import { getNumbers } from '../../utilities/utils';
 
 interface PaginationProps {
   total: number;

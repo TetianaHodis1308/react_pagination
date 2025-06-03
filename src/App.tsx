@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import { getNumbers } from './utils';
+import { getNumbers } from './utilities/utils';
 import { Pagination } from './components/Pagination';
+import { total } from './utilities/total';
 
 export const App: React.FC = () => {
   const [value, setValue] = useState(5);
@@ -9,14 +10,11 @@ export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const start = currentPage * value - value + 1;
-  const end = start + value - 1 < 42 ? start + value - 1 : 42;
-  const total = 42;
-  // const items = getNumbers(start, total).map(n => `Item ${n}`);
+  const end = start + value - 1 < total ? start + value - 1 : total;
+
   const items = getNumbers(1, total).map(n => `Item ${n}`);
 
   const perPageSelector = [3, 5, 10, 20];
-
-  // const visibleItems = items.slice(0, value);
 
   const visibleItems = items.slice(start - 1, end);
 
